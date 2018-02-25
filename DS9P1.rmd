@@ -1,0 +1,24 @@
+---
+title: "DS9P1 - R Markdown and Leaflet"
+author: "Jeremy Stalberger"
+date: "February 25, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Washington D.C. Landmarks
+
+```{r, echo=FALSE}
+library(leaflet)
+my_map <- data.frame(lat = c(38.889299, 38.889471, 38.889798, 38.897680, 38.881399),
+                 lng = c(-77.050208, -77.035245, -77.009120, -77.036531, -77.036456))
+my_labels <- c("Lincoln Memorial","Washington Monument","U.S. Capitol","The White House",
+               "Thomas Jefferson Memorial")
+my_map %>%
+    leaflet() %>% 
+    addTiles() %>% 
+    addMarkers(popup = my_labels)
+```
